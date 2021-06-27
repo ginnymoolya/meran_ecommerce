@@ -11,11 +11,10 @@ const ProductScreen = ({ match, history }) => {
     const dispatch = useDispatch();
 
     const productDetails = useSelector((state) => state.getProductDetails);
-    console.log(productDetails);
-    const { loading, error, product } = productDetails;
+    const { product, loading, error } = productDetails;
+
 
     useEffect(() => {
-        // dispatch(getProductDetails(match.params.id));
         if (product && match.params.id !== product._id) {
             dispatch(getProductDetails(match.params.id));
         }
@@ -31,9 +30,10 @@ const ProductScreen = ({ match, history }) => {
             {loading ? (
                 <h2>Loading...</h2>
             ) : error ? (
-                <h2>{error}</h2>
+                <h2> {error} </h2>
             ) : (
                 <>
+                    <p>{product}</p>
                     <div className="productscreen__left">
                         <div className="left__image">
                             <p>Product Details</p>

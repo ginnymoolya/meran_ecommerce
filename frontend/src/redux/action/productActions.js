@@ -30,14 +30,13 @@ export const getProductDetails = (id) => async (dispatch) => {
             type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS,
             payload: data,
         });
-        console.log(data)
     } catch (error) {
         dispatch({
             type: actionTypes.GET_PRODUCT_DETAILS_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message
-                    : error.message,
+                    : error.message
         });
 
     }
